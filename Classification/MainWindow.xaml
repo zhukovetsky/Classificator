@@ -1,0 +1,47 @@
+﻿<Window x:Class="Classification.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.codeplex.com"
+        Title="Classificator" Height="480" Width="640" MinWidth="720" MinHeight="480">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Name="_menu"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="Spectrum">
+                <MenuItem Header="Display spectrum" Click="showSpectrumClick"></MenuItem>
+                <MenuItem Header="Display classification" Click="displaySpectrumClassificationClick"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Crab">
+                <MenuItem Header="Display tree" Click="displayTreeClick"></MenuItem>
+                <MenuItem Header="Display classification" Click="displayCrabClassificationClick"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Formal Element">
+                <MenuItem Header="Classify" Click="classifyTroutClick"></MenuItem>
+            </MenuItem>
+            <Separator />
+            <MenuItem Header="Coherence Degree">
+                <MenuItem Header="Distance" Click="setDistanceCoherenceDegreeStrategy"></MenuItem>
+                <MenuItem Header="Cosine" Click="setCosineCoherenceDegreeStrategy"></MenuItem>
+            </MenuItem>
+            <Label>Desired Groups Count</Label>
+            <ComboBox Name="_groupsCount"></ComboBox>
+        </Menu>
+        <TextBox Grid.Column="0" Grid.Row="2" Grid.RowSpan="3" Name="_classificationResult"
+                 Margin="5" IsEnabled="False"></TextBox>
+        <oxy:PlotView Name="_plotView" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5"/>
+    </Grid>
+</Window>
